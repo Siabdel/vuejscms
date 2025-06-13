@@ -1,4 +1,7 @@
 from django.db import models
+
+# Create your models here.
+from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
@@ -26,8 +29,8 @@ class Section(models.Model):
         return f"{self.title or 'Section'} ({self.page.title})"
 
 # Bloc générique polymorphe (via GenericForeignKey)
-class Block(models.Model):
-    section = models.ForeignKey(Section, related_name='blocks', on_delete=models.CASCADE)
+class MBlock(models.Model):
+    section = models.ForeignKey(Section, related_name='mblocks', on_delete=models.CASCADE)
     order = models.PositiveIntegerField(default=0)
     # Polymorphisme via ContentType
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -142,3 +145,4 @@ class MediaContent(models.Model):
 
     def __str__(self):
         return self.file.name
+

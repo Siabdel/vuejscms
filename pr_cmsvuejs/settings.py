@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django_extensions',
     # app local 
     'vcms_app',
+    'landpage_app',
 ]
 
 MIDDLEWARE = [
@@ -134,15 +135,19 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
+TIME_ZONE = 'Europe/Paris'
 
-LANGUAGE_CODE = 'en-us'
+# Language code for this installation. All choices can be found here:
+# http://www.i18nguy.com/unicode/language-identifiers.html
+LANGUAGE_CODE = 'Fr-fr'
+
+DEFAULT_CHARSET='UTF-8'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -153,3 +158,88 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+STATIC_URL = 'static/'
+# Chemin où les fichiers statiques seront collectés (utilisé pour le déploiement)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# Additional locations of static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'media'),
+    os.path.join(BASE_DIR, 'media', 'upload'),
+]
+
+# ManifestStaticFilesStorage is recommended in production, to prevent outdated
+# JavaScript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
+# See https://docs.djangoproject.com/en/4.0/ref/contrib/staticfiles/#manifeststaticfilesstorage
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    )
+
+# Configurer DRF pour utiliser JWT  
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES' : [
+        ##'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTIFICATION_CLASS' : [
+        'rest_famework.authentification.SessionAuthentification', 
+        'rest_framework.authentification.BasicAuthentification',
+        'rest_framework_simplejwt.authentication.JWTAuthentication', 
+        'rest_framework.authtoken',
+    ] 
+    
+}
+
+# DRF Configuration
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "https://votre-domaine.com",
+    'http://localhost:5173',
+]
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    "http://localhost:8000",
+    'http://localhost:8080',
+    'http://localhost:5173',
+] # If this is used, then not need to use `CORS_ORIGIN_ALLOW_ALL = True`
+CORS_ORIGIN_REGEX_WHITELIST = [
+    'http://localhost:3000',
+    'http://localhost:8080',
+    'http://localhost:5173',
+]
+# DJANGO REST FRAMEWORKS
+
+CORS_ORIGIN_ALLOW_ALL = True # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
+CORS_ALLOW_ALL_ORIGINS = True  # Pour le développement uniquement
+
+## CORS_ALLOW_CREDENTIALS = True
+
+# Paramètres JWT  
+SIMPLE_JWT = {  
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  
+    'ROTATE_REFRESH_TOKENS': True,  # Génère un nouveau refresh token à chaque utilisation  
+    'BLACKLIST_AFTER_ROTATION': True,  # Blacklist les anciens tokens  
+    'AUTH_HEADER_TYPES': ('Bearer',),  # Format du header : "Authorization: Bearer <token>"  
+}

@@ -1,6 +1,7 @@
 # backend/stock/urls.py
-from django.urls import path, include
+from django.urls import path
+from .api_views import LandingPageAPIView
 
 urlpatterns = [
-     #path('', include(router.urls)),
+    path('api/landing/<slug:slug>/', LandingPageAPIView.as_view(), name='landing-page-api'),
 ]

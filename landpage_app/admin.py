@@ -1,14 +1,16 @@
+from django.contrib import admin
+
 # Register your models here.
 from django.contrib import admin
 from .models import (
-    Page, Section, Block,
+    Page, Section, MBlock,
     TextContent, ImageContent, GalleryContent, TestimonialContent,
     ServiceContent, MenuContent, DishContent,
     StatContent, StepContent, ProjectContent, MediaContent
 )
 
 class BlockInline(admin.TabularInline):
-    model = Block
+    model = MBlock
     extra = 1
 
 class SectionInline(admin.TabularInline):
@@ -27,7 +29,7 @@ class SectionAdmin(admin.ModelAdmin):
     inlines = [BlockInline]
     list_filter = ('page',)
 
-@admin.register(Block)
+@admin.register(MBlock)
 class BlockAdmin(admin.ModelAdmin):
     list_display = ('section', 'content_type', 'object_id', 'order')
     list_filter = ('section', 'content_type')
@@ -45,3 +47,4 @@ admin.site.register(StatContent)
 admin.site.register(StepContent)
 admin.site.register(ProjectContent)
 admin.site.register(MediaContent)
+

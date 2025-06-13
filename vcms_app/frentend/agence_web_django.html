@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DjangoWave | Développement Web sur Mesure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(43,88,118,0.9) 0%, rgba(78,67,118,0.9) 100%);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 3s infinite;
+        }
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(-5px); }
+            50% { transform: translateY(5px); }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-lg sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="#" class="flex items-center">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2306/2306030.png" alt="Logo DjangoWave" class="h-8 w-auto">
+                            <span class="ml-2 text-xl font-bold gradient-text">DjangoWave</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#services" class="text-gray-700 hover:text-indigo-600 px-3 py-2 font-medium">Services</a>
+                        <a href="#expertise" class="text-gray-700 hover:text-indigo-600 px-3 py-2 font-medium">Expertise</a>
+                        <a href="#projets" class="text-gray-700 hover:text-indigo-600 px-3 py-2 font-medium">Projets</a>
+                        <a href="#about" class="text-gray-700 hover:text-indigo-600 px-3 py-2 font-medium">À propos</a>
+                        <a href="#contact" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-6 py-2 rounded-md font-medium hover:opacity-90 transition duration-300">Contactez-nous</a>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                        <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 focus:outline-none">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="mobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="md:hidden" v-show="mobileMenuOpen">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+                    <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Services</a>
+                    <a href="#expertise" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Expertise</a>
+                    <a href="#projets" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Projets</a>
+                    <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">À propos</a>
+                    <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-blue-600 to-indigo-700 text-white">Contactez-nous</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+      
+        <!-- Clients Logo -->
+        <section class="py-12 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-gray-500 mb-8">Ils nous font confiance</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                    <img src="https://via.placeholder.com/160x80?text=Client+1" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://via.placeholder.com/160x80?text=Client+2" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://via.placeholder.com/160x80?text=Client+3" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://via.placeholder.com/160x80?text=Client+4" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://via.placeholder.com/160x80?text=Client+5" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <!-- Expertise Section -->
+        <!-- Stats Section -->
+              <!-- Projects Section -->
+        <!-- Testimonials -->
+        <!-- Process Section -->
+        <!-- CTA Section -->
+        <!-- Contact Section -->
+        <section v-for="section in page.sections" :key="section.id">
+            <div v-for="block in section.blocks" :key="block.id">
+                <template v-if="block.content.title">
+                    <h2>{{ block.content.title }}</h2>
+                </template>
+                <template v-if="block.content.body">
+                    <p>{{ block.content.body }}</p>
+                </template>
+                <template v-if="block.content.description">
+                    <p>{{ block.content.description }}</p>
+                </template>
+                <template v-if="block.content.quote">
+                    <blockquote>"{{ block.content.quote }}"</blockquote>
+                    <p><strong>{{ block.content.author }}</strong> - {{ block.content.position }}</p>
+                </template>
+                <template v-if="block.content.label">
+                    <span>{{ block.content.value }} {{ block.content.label }}</span>
+                </template>
+            <!-- Ajoutez d'autres rendus selon le type de contenu -->
+            </div>
+        </section>
+       
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white pt-16 pb-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+                    <div class="col-span-2">
+                        <a href="#" class="flex items-center">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2306/2306030.png" alt="Logo DjangoWave" class="h-8 w-auto">
+                            <span class="ml-2 text-xl font-bold gradient-text">DjangoWave</span>
+                        </a>
+                        <p class="mt-4 text-gray-400">
+                            Spécialistes du développement Django pour solutions métiers sur mesure. Nous transformons vos idées en applications performantes.
+                        </p>
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="text-gray-400 hover:text-white">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-6">Services</h3>
+                        <ul class="space-y-3 text-gray-400">
+                            <li><a href="#" class="hover:text-white transition duration-300">Développement E-commerce</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-300">Solutions ERP/CRM</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-300">Gestion de stock</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-300">Plateformes immobilières</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-300">CMS personnalisés</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-6">Liens utiles</h3>
+                        <ul class="space-y-3 text-gray-400">
+                            <li><a href="#" class="hover:text-white transition duration-300">À propos</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-300">Notre équipe</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-300">Blog</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-300">Mentions légales</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-300">Politique de confidentialité</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400">© 2023 DjangoWave. Tous droits réservés.</p>
+                    <div class="mt-4 md:mt-0">
+                        <a href="#top" class="text-gray-400 hover:text-white transition duration-300 flex items-center">
+                            Retour en haut <i class="fas fa-arrow-up ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- Inclure Vue.js et Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+   <script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                mobileMenuOpen: false,
+                projectsCount: 0,
+                clientsCount: 0,
+                yearsExperience: 0,
+                cupsCoffee: 0,
+                page: { sections: [] },
+                services: [
+                    {
+                        id: 1,
+                        title: "E-commerce",
+                        description: "Solutions e-commerce performantes avec paiement sécurisé, gestion des stocks et expérience client optimale.",
+                        icon: "shopping-cart",
+                        color: "blue"
+                    },
+                    {
+                        id: 2,
+                        title: "Gestion de stock",
+                        description: "Systèmes de gestion d'inventaire en temps réel avec alertes et prévisions pour optimiser vos stocks.",
+                        icon: "boxes",
+                        color: "indigo"
+                    },
+                    {
+                        id: 3,
+                        title: "CRM sur mesure",
+                        description: "Outils de gestion de la relation client adaptés à votre secteur d'activité avec automatisation des processus.",
+                        icon: "users",
+                        color: "purple"
+                    },
+                    {
+                        id: 4,
+                        title: "ERP",
+                        description: "Systèmes de gestion intégrés pour optimiser l'ensemble de vos processus métiers.",
+                        icon: "chart-line",
+                        color: "green"
+                    },
+                    {
+                        id: 5,
+                        title: "Solutions immobilières",
+                        description: "Plateformes spécialisées pour agences immobilières avec gestion des biens, rendez-vous et visites virtuelles.",
+                        icon: "home",
+                        color: "red"
+                    },
+                    {
+                        id: 6,
+                        title: "CMS personnalisé",
+                        description: "Systèmes de gestion de contenu adaptés à vos besoins avec éditeur intuitif pour vos équipes.",
+                        icon: "file-alt",
+                        color: "yellow"
+                    }
+                ],
+                projects: [
+                    {
+                        id: 1,
+                        title: "E-commerce Mode Luxe",
+                        description: "Plateforme e-commerce haut de gamme avec système de recommandation IA",
+                        image: "https://images.unsplash.com/photo-1607082352122-fa4437c95f25?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "React", "Paiement sécurisé"]
+                    },
+                    {
+                        id: 2,
+                        title: "Gestion de stock B2B",
+                        description: "Solution complète de gestion d'inventaire pour distributeur",
+                        image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "Stock temps réel", "Reporting"]
+                    },
+                    {
+                        id: 3,
+                        title: "Solution CRM Immobilier",
+                        description: "Outil de gestion clientèle pour réseau d'agences immobilières",
+                        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "Calendrier", "Visites 3D"]
+                    },
+                    {
+                        id: 4,
+                        title: "ERP Pharmacie",
+                        description: "Système intégré gestion stocks, ventes et RH pour chaîne de pharmacie",
+                        image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "ERP", "Gestion des flux"]
+                    },
+                    {
+                        id: 5,
+                        title: "Marketplace Pro",
+                        description: "Place de marché verticale pour professionnels du bâtiment",
+                        image: "https://images.unsplash.com/photo-1575566379038-8ce2cdf46a4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "Marketplace", "Espace pro"]
+                    },
+                    {
+                        id: 6,
+                        title: "CMS Édition",
+                        description: "Système de gestion de contenu pour éditeur de presse",
+                        image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "CMS", "Workflow"]
+                    }
+                ],
+                expertises: [
+                    {
+                        id: 1,
+                        title: "Sécurité renforcée",
+                        description: "Django intègre des protections natives contre les vulnérabilités web les plus courantes (XSS, CSRF, SQL injection).",
+                        icon: "shield-alt",
+                        color: "blue"
+                    },
+                    {
+                        id: 2,
+                        title: "Performance optimale",
+                        description: "Architecture MVT et cache intelligent pour des applications ultra rapides, même avec des charges importantes.",
+                        icon: "tachometer-alt",
+                        color: "indigo"
+                    },
+                    {
+                        id: 3,
+                        title: "Évolutivité garantie",
+                        description: "Nos solutions s'adaptent à votre croissance, avec possibilité d'ajouter des fonctionnalités sans refonte complète.",
+                        icon: "expand",
+                        color: "purple"
+                    }
+                ],
+                stats: [
+                    {
+                        id: 1,
+                        count: 150,
+                        label: "Projets réalisés",
+                        ref: "projectsCounter"
+                    },
+                    {
+                        id: 2,
+                        count: 89,
+                        label: "Clients satisfaits",
+                        ref: "clientsCounter"
+                    },
+                    {
+                        id: 3,
+                        count: 8,
+                        label: "Ans d'expérience",
+                        ref: "yearsCounter"
+                    },
+                    {
+                        id: 4,
+                        count: 12450,
+                        label: "Tasses de café",
+                        ref: "coffeeCounter"
+                    }
+                ],
+                testimonials: [
+                    {
+                        name: "Jean Dupont",
+                        position: "Directeur Technique, FashionClick",
+                        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+                        quote: "DjangoWave a transformé notre boutique en ligne avec une solution sur mesure qui a boosté nos ventes de 40% en 6 mois.",
+                        rating: 5
+                    },
+                    {
+                        name: "Sophie Martin",
+                        position: "CEO, PharmaStock",
+                        avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+                        quote: "Leur ERP pour notre chaîne de pharmacies a simplifié toutes nos opérations quotidiennes avec une intégration parfaite avec nos systèmes existants.",
+                        rating: 5
+                    },
+                    {
+                        name: "Pierre Leroy",
+                        position: "Directeur, ImmoPro",
+                        avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+                        quote: "Notre CRM spécialisé développé par DjangoWave a changé la façon dont nos agents collaborent et suivent leurs prospects et clients.",
+                        rating: 4
+                    }
+                ],
+                processSteps: [
+                    {
+                        title: "Analyse des besoins",
+                        description: "Nous étudions votre projet en détail pour comprendre vos objectifs métiers et vos contraintes techniques."
+                    },
+                    {
+                        title: "Proposition sur-mesure",
+                        description: "Nous concevons une solution technique adaptée à vos besoins avec un plan de projet clair et un devis transparent."
+                    },
+                    {
+                        title: "Développement agile",
+                        description: "Nos équipes développent votre solution en cycles courts avec des livraisons régulières pour valider chaque étape."
+                    },
+                    {
+                        title: "Tests et optimisation",
+                        description: "Nous testons rigoureusement votre application pour garantir qualité, performance et sécurité avant déploiement."
+                    },
+                    {
+                        title: "Formation & support",
+                        description: "Nous vous accompagnons dans la prise en main et assurons un support technique réactif après la mise en production."
+                    }
+                ],
+                form: {
+                    name: "",
+                    email: "",
+                    phone: "",
+                    service: "",
+                    message: ""
+                }
+            };
+        },
+        methods: {
+            submitForm() {
+                alert(`Merci ${this.form.name} pour votre message! Nous vous contacterons bientôt à propos de votre demande pour ${this.form.service}.`);
+                this.form = {
+                    name: "",
+                    email: "",
+                    phone: "",
+                    service: "",
+                    message: ""
+                };
+            },
+            animateCounter(element, target, duration = 2000) {
+                const increment = target / (duration / 16);
+                const startTime = performance.now();
+                const step = (timestamp) => {
+                    const elapsed = timestamp - startTime;
+                    if (elapsed < duration) {
+                        const value = Math.min(Math.ceil(increment * (elapsed / 16)), target);
+                        element.textContent = value;
+                        requestAnimationFrame(step);
+                    } else {
+                        element.textContent = target;
+                    }
+                };
+                requestAnimationFrame(step);
+            }
+        },
+        mounted() {
+            this.animateCounter(document.querySelector('[ref="projectsCounter"]'), 150);
+            this.animateCounter(document.querySelector('[ref="clientsCounter"]'), 89);
+            this.animateCounter(document.querySelector('[ref="yearsCounter"]'), 8);
+            this.animateCounter(document.querySelector('[ref="coffeeCounter"]'), 12450);
+
+            axios.get('/api/landing/accueil-agence-django/')
+                .then(response => {
+                    if (response.data && Array.isArray(response.data.sections)) {
+                        this.page = response.data;
+                    } else {
+                        this.page = { sections: [] };
+                    }
+                })
+                .catch(() => {
+                    this.page = { sections: [] };
+                });
+        }
+    });
+
+    app.mount('#app');
+</script>
+
+   
+</body>
+</html>
