@@ -204,11 +204,188 @@
                 yearsExperience: 0,
                 cupsCoffee: 0,
                 page: { sections: [] },
-                services: [],
-                projects: [],
-                expertises: [],
-                stats: [] ,
-                processSteps: [],
+                services: [
+                    {
+                        id: 1,
+                        title: "E-commerce",
+                        description: "Solutions e-commerce performantes avec paiement sécurisé, gestion des stocks et expérience client optimale.",
+                        icon: "shopping-cart",
+                        color: "blue"
+                    },
+                    {
+                        id: 2,
+                        title: "Gestion de stock",
+                        description: "Systèmes de gestion d'inventaire en temps réel avec alertes et prévisions pour optimiser vos stocks.",
+                        icon: "boxes",
+                        color: "indigo"
+                    },
+                    {
+                        id: 3,
+                        title: "CRM sur mesure",
+                        description: "Outils de gestion de la relation client adaptés à votre secteur d'activité avec automatisation des processus.",
+                        icon: "users",
+                        color: "purple"
+                    },
+                    {
+                        id: 4,
+                        title: "ERP",
+                        description: "Systèmes de gestion intégrés pour optimiser l'ensemble de vos processus métiers.",
+                        icon: "chart-line",
+                        color: "green"
+                    },
+                    {
+                        id: 5,
+                        title: "Solutions immobilières",
+                        description: "Plateformes spécialisées pour agences immobilières avec gestion des biens, rendez-vous et visites virtuelles.",
+                        icon: "home",
+                        color: "red"
+                    },
+                    {
+                        id: 6,
+                        title: "CMS personnalisé",
+                        description: "Systèmes de gestion de contenu adaptés à vos besoins avec éditeur intuitif pour vos équipes.",
+                        icon: "file-alt",
+                        color: "yellow"
+                    }
+                ],
+                projects: [
+                    {
+                        id: 1,
+                        title: "E-commerce Mode Luxe",
+                        description: "Plateforme e-commerce haut de gamme avec système de recommandation IA",
+                        image: "https://images.unsplash.com/photo-1607082352122-fa4437c95f25?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "React", "Paiement sécurisé"]
+                    },
+                    {
+                        id: 2,
+                        title: "Gestion de stock B2B",
+                        description: "Solution complète de gestion d'inventaire pour distributeur",
+                        image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "Stock temps réel", "Reporting"]
+                    },
+                    {
+                        id: 3,
+                        title: "Solution CRM Immobilier",
+                        description: "Outil de gestion clientèle pour réseau d'agences immobilières",
+                        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "Calendrier", "Visites 3D"]
+                    },
+                    {
+                        id: 4,
+                        title: "ERP Pharmacie",
+                        description: "Système intégré gestion stocks, ventes et RH pour chaîne de pharmacie",
+                        image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "ERP", "Gestion des flux"]
+                    },
+                    {
+                        id: 5,
+                        title: "Marketplace Pro",
+                        description: "Place de marché verticale pour professionnels du bâtiment",
+                        image: "https://images.unsplash.com/photo-1575566379038-8ce2cdf46a4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "Marketplace", "Espace pro"]
+                    },
+                    {
+                        id: 6,
+                        title: "CMS Édition",
+                        description: "Système de gestion de contenu pour éditeur de presse",
+                        image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        tags: ["Django", "CMS", "Workflow"]
+                    }
+                ],
+                expertises: [
+                    {
+                        id: 1,
+                        title: "Sécurité renforcée",
+                        description: "Django intègre des protections natives contre les vulnérabilités web les plus courantes (XSS, CSRF, SQL injection).",
+                        icon: "shield-alt",
+                        color: "blue"
+                    },
+                    {
+                        id: 2,
+                        title: "Performance optimale",
+                        description: "Architecture MVT et cache intelligent pour des applications ultra rapides, même avec des charges importantes.",
+                        icon: "tachometer-alt",
+                        color: "indigo"
+                    },
+                    {
+                        id: 3,
+                        title: "Évolutivité garantie",
+                        description: "Nos solutions s'adaptent à votre croissance, avec possibilité d'ajouter des fonctionnalités sans refonte complète.",
+                        icon: "expand",
+                        color: "purple"
+                    }
+                ],
+                stats: [
+                    {
+                        id: 1,
+                        count: 150,
+                        label: "Projets réalisés",
+                        statRef: "projectsCounter"
+                    },
+                    {
+                        id: 2,
+                        count: 89,
+                        label: "Clients satisfaits",
+                        statRef: "clientsCounter"
+                    },
+                    {
+                        id: 3,
+                        count: 8,
+                        label: "Ans d'expérience",
+                        statRef: "yearsCounter"
+                    },
+                    {
+                        id: 4,
+                        count: 12450,
+                        label: "Tasses de café",
+                        statRef: "coffeeCounter"
+                    }
+                ],
+                
+                   {
+                        name: "Jean Dupont",
+                        position: "Directeur Technique, FashionClick",
+                        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+                        quote: "DjangoWave a transformé notre boutique en ligne avec une solution sur mesure qui a boosté nos ventes de 40% en 6 mois.",
+                        rating: 5
+                    },
+                    {
+                        name: "Sophie Martin",
+                        position: "CEO, PharmaStock",
+                        avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+                        quote: "Leur ERP pour notre chaîne de pharmacies a simplifié toutes nos opérations quotidiennes avec une intégration parfaite avec nos systèmes existants.",
+                        rating: 5
+                    },
+                    {
+                        name: "Pierre Leroy",
+                        position: "Directeur, ImmoPro",
+                        avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+                        quote: "Notre CRM spécialisé développé par DjangoWave a changé la façon dont nos agents collaborent et suivent leurs prospects et clients.",
+                        rating: 4
+                    }
+                ],
+                processSteps: [
+                    {
+                        title: "Analyse des besoins",
+                        description: "Nous étudions votre projet en détail pour comprendre vos objectifs métiers et vos contraintes techniques."
+                    },
+                    {
+                        title: "Proposition sur-mesure",
+                        description: "Nous concevons une solution technique adaptée à vos besoins avec un plan de projet clair et un devis transparent."
+                    },
+                    {
+                        title: "Développement agile",
+                        description: "Nos équipes développent votre solution en cycles courts avec des livraisons régulières pour valider chaque étape."
+                    },
+                    {
+                        title: "Tests et optimisation",
+                        description: "Nous testons rigoureusement votre application pour garantir qualité, performance et sécurité avant déploiement."
+                    },
+                    {
+                        title: "Formation & support",
+                        description: "Nous vous accompagnons dans la prise en main et assurons un support technique réactif après la mise en production."
+                    }
+                ],
                 form: {
                     name: "",
                     email: "",
