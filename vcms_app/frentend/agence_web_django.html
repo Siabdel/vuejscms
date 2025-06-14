@@ -78,11 +78,11 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <p class="text-center text-gray-500 mb-8">Ils nous font confiance</p>
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-                    <img src="https://via.placeholder.com/160x80?text=Client+1" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
-                    <img src="https://via.placeholder.com/160x80?text=Client+2" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
-                    <img src="https://via.placeholder.com/160x80?text=Client+3" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
-                    <img src="https://via.placeholder.com/160x80?text=Client+4" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
-                    <img src="https://via.placeholder.com/160x80?text=Client+5" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://dummyimage.com/160x80?text=Client+1" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://dummyimage.com/160x80?text=Client+2" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://dummyimage.com/160x80?text=Client+3" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://dummyimage.com/160x80?text=Client+4" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://dummyimage.com/160x80?text=Client+5" alt="Client" class="h-10 md:h-12 mx-auto grayscale hover:grayscale-0 transition duration-300">
                 </div>
             </div>
         </section>
@@ -90,7 +90,19 @@
         <!-- Services Section -->
         <!-- Expertise Section -->
         <!-- Stats Section -->
-              <!-- Projects Section -->
+        <section class="bg-white py-12">
+           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                   <div v-for="stat in stats" :key="stat.id" class="text-center">
+                       <div class="text-4xl font-bold text-indigo-600" :ref="stat.statRef">
+                           0
+                       </div>
+                       <p class="mt-2 text-gray-500">{{ stat.label }}</p>
+                   </div>
+               </div>
+           </div>
+       </section>
+             <!-- Projects Section -->
         <!-- Testimonials -->
         <!-- Process Section -->
         <!-- CTA Section -->
@@ -308,29 +320,29 @@
                         id: 1,
                         count: 150,
                         label: "Projets réalisés",
-                        ref: "projectsCounter"
+                        statRef: "projectsCounter"
                     },
                     {
                         id: 2,
                         count: 89,
                         label: "Clients satisfaits",
-                        ref: "clientsCounter"
+                        statRef: "clientsCounter"
                     },
                     {
                         id: 3,
                         count: 8,
                         label: "Ans d'expérience",
-                        ref: "yearsCounter"
+                        statRef: "yearsCounter"
                     },
                     {
                         id: 4,
                         count: 12450,
                         label: "Tasses de café",
-                        ref: "coffeeCounter"
+                        statRef: "coffeeCounter"
                     }
                 ],
-                testimonials: [
-                    {
+                
+                   {
                         name: "Jean Dupont",
                         position: "Directeur Technique, FashionClick",
                         avatar: "https://randomuser.me/api/portraits/men/32.jpg",
@@ -394,7 +406,12 @@
                     message: ""
                 };
             },
-            animateCounter(element, target, duration = 2000) {
+            animateCounter(refName, target, duration = 2000) {
+                const element = this.$refs[refName][0];
+                if (!element) {
+                    console.error(`Element with ref "${refName}" not found`);
+                    return;
+                }
                 const increment = target / (duration / 16);
                 const startTime = performance.now();
                 const step = (timestamp) => {
@@ -411,15 +428,18 @@
             }
         },
         mounted() {
-            this.animateCounter(document.querySelector('[ref="projectsCounter"]'), 150);
-            this.animateCounter(document.querySelector('[ref="clientsCounter"]'), 89);
-            this.animateCounter(document.querySelector('[ref="yearsCounter"]'), 8);
-            this.animateCounter(document.querySelector('[ref="coffeeCounter"]'), 12450);
-
-            axios.get('/api/landing/accueil-agence-django/')
+            this.animateCounter('projectsCounter', 150);
+            this.animateCounter('clientsCounter', 89);
+            this.animateCounter('yearsCounter', 8);
+            this.animateCounter('coffeeCounter', 12450);
+            //--
+            let url = 'localhost:8000/api/landing/accueil-agence-django/';
+            
+            axios.get(url)
                 .then(response => {
                     if (response.data && Array.isArray(response.data.sections)) {
                         this.page = response.data;
+                        console.log("page = ", this.page)
                     } else {
                         this.page = { sections: [] };
                     }

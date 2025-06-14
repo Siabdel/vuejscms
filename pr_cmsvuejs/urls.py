@@ -22,7 +22,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cms/', include('vcms_app.urls'))
+    path('cms/', include('vcms_app.urls')),
+    path('m_cms/', include('landpage_app.urls')),
 ]
 
 if settings.DEBUG:
